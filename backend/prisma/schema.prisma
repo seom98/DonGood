@@ -1,0 +1,95 @@
+
+// schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            Int             @id @default(autoincrement())
+  email         String          @unique
+  password      String
+  nickname      String
+  level         Int             @default(1)
+  levelPoint    Int             @default(0)
+  createdAt     DateTime        @default(now())
+  spendingGoals SpendingGoal[]
+  categories    Category[]
+  spendings     Spending[]
+  levelHistory  LevelHistory[]
+}
+
+model SpendingGoal {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  type      GoalType
+  amount    Int
+  date      DateTime
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id            Int             @id @default(autoincrement())
+  user          User            @relation(fields: [userId], references: [id])
+  userId        Int
+  name          String
+  createdAt     DateTime        @default(now())
+  goals         CategoryGoal[]
+  spendings     Spending[]
+}
+
+model CategoryGoal {
+  id         Int       @id @default(autoincrement())
+  category   Category  @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  type       GoalType
+  amount     Int
+  date       DateTime
+  createdAt  DateTime  @default(now())
+}
+
+model Spending {
+  id          Int       @id @default(autoincrement())
+  user        User      @relation(fields: [userId], references: [id])
+  userId      Int
+  category    Category  @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  date        DateTime
+  time        String // 또는 DateTime 사용 가능
+  amount      Int
+  avoidable   Boolean
+  title       String
+  description String?
+  location    String?
+  companions  String?
+  createdAt   DateTime  @default(now())
+}
+
+model LevelHistory {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  pointAdded Int
+  reason     String
+  createdAt  DateTime @default(now())
+}
+
+// 인기도 기준으로 저장하는 전용 테이블
+model PopularCategory {
+  id         Int     @id @default(autoincrement())
+  name       String  @unique
+  usageCount Int     @default(0)
+}
+
+// 일간/월간 구분용 enum
+enum GoalType {
+  DAILY
+  MONTHLY
+}
+

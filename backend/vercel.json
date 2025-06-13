@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "backend/(.*)",
+      "src": "/(.*)",
       "dest": "dist/src/main.js",
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]
     }

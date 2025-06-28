@@ -1,4 +1,15 @@
 import styles from "./page.module.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "돈 굳었다! 돈굳",
+    description: "돈 굳게 도와주는 지금껏 본적없는 새로운 가계부",
+    openGraph: {
+        title: "돈 굳었다! 돈굳",
+        description: "돈 굳게 도와주는 지금껏 본적없는 새로운 가계부",
+        images: ["/DonGood_img"],
+    },
+};
 
 export default function Home() {
     return (

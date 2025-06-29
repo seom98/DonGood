@@ -54,17 +54,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: scale ease-in-out infinite 4s;
+    animation: scale ease-in-out infinite 3s;
 }
 
 .don {
     width: 175px;
     height: 225px;
-    animation: rotate infinite 4s;
+    animation: rotate infinite 3s;
 }
 
 .don2 {
-    animation: good1 ease-in-out infinite 4s;
+    animation: good1 ease-in-out infinite 3s;
 }
 
 .don1,
@@ -72,42 +72,45 @@
 .don5,
 .don7 {
     width: 175px;
-    height: 25px;
+    height: 35px;
     background-color: #ccc;
     transform: scaleY(1.05);
 }
 .don2,
 .don4,
 .don6 {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 15px;
     background-color: #ccc;
 }
 
 .don3,
 .don5 {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 .don4 {
-    margin-left: 75px;
+    margin-left: 70px;
 }
 
 .don1 {
     border-radius: 5px 5px 0 0;
 }
+.don7 {
+    border-radius: 0 0 5px 5px;
+}
 
 @keyframes good1 {
     0%,
-    10% {
+    20% {
         transform: translateX(0);
     }
 
-    40%,
-    60% {
-        transform: translateX(150px);
+    25%,
+    70% {
+        transform: translateX(140px);
     }
 
-    90%,
+    75%,
     100% {
         transform: translateX(0);
     }
@@ -142,7 +145,7 @@
     }
 
     40% {
-        transform: scale(0.7);
+        transform: scale(0.65);
     }
     50% {
         transform: scale(0.6);
@@ -155,7 +158,7 @@
         transform: scale(0.3);
     }
     90% {
-        transform: scale(0.7);
+        transform: scale(0.65);
     }
     100% {
         transform: scale(0.6);

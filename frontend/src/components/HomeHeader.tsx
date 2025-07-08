@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "@/styles/components/HomeHeader.module.css";
 import LogoIcon from "./icons/LogoIcon";
 import MenuIcon from "./icons/MenuIcon";
@@ -13,11 +13,32 @@ export default function HomeHeader() {
     const [currentTheme, setCurrentTheme] = useState<
         "light" | "dark" | "system"
     >("light");
+    const menuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         // 컴포넌트 마운트 시 현재 테마 가져오기
         setCurrentTheme(getCurrentTheme());
     }, []);
+
+    useEffect(() => {
+        // 팝업 외부 클릭 시 메뉴 닫기
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                menuRef.current &&
+                !menuRef.current.contains(event.target as Node)
+            ) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        if (isMenuOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isMenuOpen]);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -26,7 +47,6 @@ export default function HomeHeader() {
     const handleThemeChange = (theme: "light" | "dark" | "system") => {
         setTheme(theme);
         setCurrentTheme(theme);
-        setIsMenuOpen(false); // 테마 변경 후 메뉴 닫기
     };
 
     return (
@@ -39,50 +59,90 @@ export default function HomeHeader() {
                 />
                 <div className={styles.headerLogoText}>DonGood</div>
             </div>
-            <div className={styles.headerMenu}>
-                <div className={styles.themeIcons}>
-                    <button
-                        className={`${styles.themeButton} ${
-                            currentTheme === "light" ? styles.active : ""
-                        }`}
-                        onClick={() => handleThemeChange("light")}
-                        aria-label="라이트 모드"
-                    >
-                        <SunIcon className={styles.headerMenuIcon} />
-                    </button>
-                    <button
-                        className={`${styles.themeButton} ${
-                            currentTheme === "dark" ? styles.active : ""
-                        }`}
-                        onClick={() => handleThemeChange("dark")}
-                        aria-label="다크 모드"
-                    >
-                        <MoonIcon className={styles.headerMenuIcon} />
-                    </button>
-                    <button
-                        className={`${styles.themeButton} ${
-                            currentTheme === "system" ? styles.active : ""
-                        }`}
-                        onClick={() => handleThemeChange("system")}
-                        aria-label="시스템 설정"
-                    >
-                        <SystemIcon className={styles.headerMenuIcon} />
-                    </button>
-                </div>
+            <div className={styles.headerMenu} ref={menuRef}>
                 <button
                     className={styles.menuButton}
                     onClick={toggleMenu}
                     aria-label="메뉴 열기"
                 >
                     <MenuIcon className={styles.headerMenuIcon} />
-                    <div
-                        className={`${styles.menuPopup} ${
-                            isMenuOpen ? styles.menuOpen : ""
-                        }`}
-                    >
-                        <div className={styles.menuContent}></div>
-                    </div>
                 </button>
+                <div
+                    className={`${styles.menuPopup} ${
+                        isMenuOpen ? styles.menuOpen : ""
+                    }`}
+                >
+                    <div className={styles.menuContent}>
+                        <div className={styles.menuSection}>
+                            <div className={styles.menuSectionTitle}>
+                                테마 설정
+                            </div>
+                            <div className={styles.themeOptions}>
+                                <button
+                                    className={`${styles.themeOption} ${
+                                        currentTheme === "light"
+                                            ? styles.active
+                                            : ""
+                                    }`}
+                                    onClick={() => handleThemeChange("light")}
+                                >
+                                    <div className={styles.themeOptionContent}>
+                                        <div
+                                            className={styles.themeOptionTitle}
+                                        >
+                                            밝은 라이트 모드
+                                        </div>
+                                    </div>
+                                    <div className={styles.themeOptionIcon}>
+                                        <SunIcon className={styles.themeIcon} />
+                                    </div>
+                                </button>
+                                <button
+                                    className={`${styles.themeOption} ${
+                                        currentTheme === "dark"
+                                            ? styles.active
+                                            : ""
+                                    }`}
+                                    onClick={() => handleThemeChange("dark")}
+                                >
+                                    <div className={styles.themeOptionContent}>
+                                        <div
+                                            className={styles.themeOptionTitle}
+                                        >
+                                            어두운 다크 모드
+                                        </div>
+                                    </div>
+                                    <div className={styles.themeOptionIcon}>
+                                        <MoonIcon
+                                            className={styles.themeIcon}
+                                        />
+                                    </div>
+                                </button>
+                                <button
+                                    className={`${styles.themeOption} ${
+                                        currentTheme === "system"
+                                            ? styles.active
+                                            : ""
+                                    }`}
+                                    onClick={() => handleThemeChange("system")}
+                                >
+                                    <div className={styles.themeOptionContent}>
+                                        <div
+                                            className={styles.themeOptionTitle}
+                                        >
+                                            시스템 설정에 맞게
+                                        </div>
+                                    </div>
+                                    <div className={styles.themeOptionIcon}>
+                                        <SystemIcon
+                                            className={styles.themeIcon}
+                                        />
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

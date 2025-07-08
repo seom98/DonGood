@@ -1,0 +1,21 @@
+.page {
+}
+
+@media (prefers-color-scheme: dark) {
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+}
+
+@media (max-width: 600px) {
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--grey025);
+}

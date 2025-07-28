@@ -82,8 +82,12 @@ export default function LoginPage() {
                 if (error) throw error;
                 window.location.href = "/dashboard";
             }
-        } catch (error: any) {
-            setError(error.message || "인증 중 오류가 발생했습니다.");
+        } catch (error) {
+            const errorMessage =
+                error instanceof Error
+                    ? error.message
+                    : "인증 중 오류가 발생했습니다.";
+            setError(errorMessage);
         } finally {
             setLoading(false);
         }

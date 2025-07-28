@@ -23,7 +23,7 @@ export default function LoginPage() {
                     redirectTo: `${
                         process.env.NEXT_PUBLIC_SITE_URL ||
                         "http://localhost:3000"
-                    }/dashboard`,
+                    }/auth/callback`,
                 },
             });
 
@@ -47,7 +47,7 @@ export default function LoginPage() {
                     redirectTo: `${
                         process.env.NEXT_PUBLIC_SITE_URL ||
                         "http://localhost:3000"
-                    }/dashboard`,
+                    }/auth/callback`,
                 },
             });
 

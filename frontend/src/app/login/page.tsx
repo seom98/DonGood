@@ -20,7 +20,10 @@ export default function LoginPage() {
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: "google",
                 options: {
-                    redirectTo: `${window.location.origin}/dashboard`,
+                    redirectTo: `${
+                        process.env.NEXT_PUBLIC_SITE_URL ||
+                        "http://localhost:3000"
+                    }/dashboard`,
                 },
             });
 
@@ -41,7 +44,10 @@ export default function LoginPage() {
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: "kakao",
                 options: {
-                    redirectTo: `${window.location.origin}/dashboard`,
+                    redirectTo: `${
+                        process.env.NEXT_PUBLIC_SITE_URL ||
+                        "http://localhost:3000"
+                    }/dashboard`,
                 },
             });
 
@@ -80,7 +86,9 @@ export default function LoginPage() {
                     password,
                 });
                 if (error) throw error;
-                window.location.href = "/dashboard";
+                window.location.href = `${
+                    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+                }/dashboard`;
             }
         } catch (error) {
             const errorMessage =

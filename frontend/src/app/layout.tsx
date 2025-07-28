@@ -76,8 +76,10 @@ export default function RootLayout({
     return (
         <html lang="ko">
             <body className={`${geistSans.variable} ${geistMono.variable}`}>
-                <ThemeProvider />
-                {children}
+                <AuthProvider>
+                    <ThemeProvider />
+                    {children}
+                </AuthProvider>
             </body>
         </html>
     );

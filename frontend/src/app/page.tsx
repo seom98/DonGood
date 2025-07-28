@@ -20,7 +20,7 @@ export default function HomePage() {
                 <HomeHeader />
                 <SpinDonGood />
                 <div className={styles.dongoodText}>돈 굳었다! 돈, 굳!</div>
-                <button>시작하기</button>
+                <a href="/login">시작하기</a>
             </main>
         </div>
     );

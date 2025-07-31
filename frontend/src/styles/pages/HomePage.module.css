@@ -19,16 +19,6 @@
     background-color: var(--grey025);
     color: var(--grey900);
 }
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: var(--grey025);
-    color: var(--grey900);
-    font-size: 1.2rem;
-    font-weight: 300;
-}
 
 .startButton {
     position: fixed;

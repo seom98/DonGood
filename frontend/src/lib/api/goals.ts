@@ -1,4 +1,4 @@
-import { createServerSupabaseClient } from '../supabase/server'
+import { createServerSupabaseClient } from '@/lib/supabase/server'
 
 type UserGoal = {
   id: string

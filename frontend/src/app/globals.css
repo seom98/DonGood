@@ -187,6 +187,7 @@
 html,
 body {
     font-family: "Esamanru";
+    font-weight: 300;
     background-color: var(--grey025);
     color: var(--grey900);
 }
@@ -215,8 +216,9 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "EsaManru";
+    font-family: "Esamanru";
     font-weight: 300;
     margin: 0;
     padding: 0;
+    letter-spacing: -0.04em;
 }

@@ -4,18 +4,19 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
-export default function AuthCallback() {
+export default function AuthCallbackPage() {
     const router = useRouter();
 
     useEffect(() => {
         const handleAuthCallback = async () => {
+            const supabase = createBrowserSupabaseClient();
+
             try {
-                const supabase = createBrowserSupabaseClient();
                 const { data, error } = await supabase.auth.getSession();
 
                 if (error) {
                     console.error("Auth callback error:", error);
-                    router.replace("/login?error=auth_failed");
+                    router.replace("/?error=auth_failed");
                     return;
                 }
 
@@ -23,12 +24,12 @@ export default function AuthCallback() {
                     // 로그인 성공
                     router.replace("/dashboard");
                 } else {
-                    // 세션이 없으면 로그인 페이지로
-                    router.replace("/login");
+                    // 세션이 없음
+                    router.replace("/");
                 }
             } catch (error) {
                 console.error("Auth callback error:", error);
-                router.replace("/login?error=auth_failed");
+                router.replace("/?error=auth_failed");
             }
         };
 
@@ -42,10 +43,10 @@ export default function AuthCallback() {
                 justifyContent: "center",
                 alignItems: "center",
                 height: "100vh",
-                fontSize: "1.2rem",
+                fontFamily: "Esamanru",
             }}
         >
-            로그인 처리 중...
+            <div>로그인 처리 중...</div>
         </div>
     );
 }

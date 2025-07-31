@@ -1,44 +1,58 @@
-"use client";
-
-import { useAuth } from "@/contexts/AuthContext";
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { getAuthUser } from "@/contexts/AuthContext";
+import { redirect } from "next/navigation";
+import { getUserGoals } from "@/lib/api/goals";
+import Image from "next/image";
 import styles from "./dashboard.module.css";
+import SignOutButton from "@/components/auth/SignOutButton";
+import GoalSettings from "@/components/dashboard/GoalSettings";
 
-export default function DashboardPage() {
-    const { user, loading, signOut } = useAuth();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (!loading && !user) {
-            router.push("/login");
-        }
-    }, [user, loading, router]);
-
-    if (loading) {
-        return (
-            <div className={styles.container}>
-                <div className={styles.loading}>로딩 중...</div>
-            </div>
-        );
-    }
+export default async function DashboardPage() {
+    const user = await getAuthUser();
 
     if (!user) {
-        return null;
+        redirect("/login");
     }
+
+    // 사용자 목표 데이터 가져오기
+    const userGoals = await getUserGoals(user.id);
+
+    // 프로필 이미지 URL 가져오기 (소셜 로그인에서 제공하는 경우)
+    const profileImageUrl =
+        user.user_metadata?.avatar_url || user.user_metadata?.picture;
 
     return (
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1 className={styles.title}>돈 굳었다!</h1>
                 <div className={styles.userInfo}>
-                    <span>
-                        안녕하세요,{" "}
-                        {user.user_metadata?.full_name || user.email}님!
-                    </span>
-                    <button onClick={signOut} className={styles.signOutButton}>
-                        로그아웃
-                    </button>
+                    <div className={styles.profileSection}>
+                        <div className={styles.profileImage}>
+                            {profileImageUrl ? (
+                                <Image
+                                    src={profileImageUrl}
+                                    alt="프로필 이미지"
+                                    width={40}
+                                    height={40}
+                                    className={styles.avatar}
+                                />
+                            ) : (
+                                <div className={styles.defaultAvatar}>
+                                    {(
+                                        user.user_metadata?.full_name ||
+                                        user.email ||
+                                        "U"
+                                    )
+                                        .charAt(0)
+                                        .toUpperCase()}
+                                </div>
+                            )}
+                        </div>
+                        <span className={styles.userName}>
+                            안녕하세요,{" "}
+                            {user.user_metadata?.full_name || user.email}님!
+                        </span>
+                    </div>
+                    <SignOutButton />
                 </div>
             </header>
 
@@ -49,20 +63,29 @@ export default function DashboardPage() {
                     <p>이메일: {user.email}</p>
                 </div>
 
-                <div className={styles.features}>
-                    <div className={styles.featureCard}>
-                        <h3>지출 기록</h3>
-                        <p>매일의 지출을 기록하고 분석해보세요.</p>
+                <div className={styles.dashboardGrid}>
+                    <div className={styles.goalsSection}>
+                        <GoalSettings
+                            userId={user.id}
+                            initialGoals={userGoals}
+                        />
                     </div>
 
-                    <div className={styles.featureCard}>
-                        <h3>예산 관리</h3>
-                        <p>카테고리별 예산을 설정하고 관리하세요.</p>
-                    </div>
+                    <div className={styles.features}>
+                        <div className={styles.featureCard}>
+                            <h3>지출 기록</h3>
+                            <p>매일의 지출을 기록하고 분석해보세요.</p>
+                        </div>
 
-                    <div className={styles.featureCard}>
-                        <h3>통계 분석</h3>
-                        <p>지출 패턴을 분석하고 개선점을 찾아보세요.</p>
+                        <div className={styles.featureCard}>
+                            <h3>예산 관리</h3>
+                            <p>카테고리별 예산을 설정하고 관리하세요.</p>
+                        </div>
+
+                        <div className={styles.featureCard}>
+                            <h3>통계 분석</h3>
+                            <p>지출 패턴을 분석하고 개선점을 찾아보세요.</p>
+                        </div>
                     </div>
                 </div>
             </main>

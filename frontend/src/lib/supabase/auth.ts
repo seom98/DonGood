@@ -1,5 +1,5 @@
-import { getCurrentUser, getCurrentSession } from "@/lib/supabase/server";
-import { signOutClient } from "@/lib/supabase/client";
+import { getCurrentUser, getCurrentSession } from './server'
+import { signOutClient } from './client'
 
 // 현재 사용자 정보 가져오기
 export async function getAuthUser() {
@@ -20,4 +20,4 @@ export function useAuth() {
     throw new Error(
         "useAuth는 클라이언트 컴포넌트에서만 사용 가능합니다. 서버 컴포넌트에서는 getAuthUser()를 사용하세요."
     );
-}
+} 

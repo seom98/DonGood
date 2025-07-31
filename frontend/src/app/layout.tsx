@@ -1,24 +1,11 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import "@/styles/globals.css";
-import ThemeProvider from "@/components/ThemeProvider";
-import { AuthProvider } from "@/contexts/AuthContext";
+import "@/app/globals.css";
+import ThemeProvider from "@/components/common/ThemeProvider";
 import { Metadata } from "next";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
     title: "돈 굳었다! 돈굳 - 소비 습관 개선 가계부",
-    description:
-        "과소비 지출을 기록하며 소비 습관을 길러주는 세미 가계부. 돈을 굳혀보세요!",
-    keywords: "가계부, 지출관리, 소비습관, 돈관리, 절약, 가계부앱, 지출기록",
+    description: "과소비 지출을 기록하며 소비 습관을 길러주는 세미 가계부.",
+    keywords:
+        "가계부, 지출관리, 소비습관, 돈관리, 절약, 가계부앱, 지출기록, 돈굳, 돈 굳었다, 돈 굳, don-good, dongood, 돈굳었다, 돈굳었다!",
     authors: [{ name: "DonGood" }],
     creator: "DonGood",
     publisher: "DonGood",
@@ -33,8 +20,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: "돈 굳었다! 돈굳 - 소비 습관 개선 가계부",
-        description:
-            "과소비 지출을 기록하며 소비 습관을 길러주는 세미 가계부. 돈을 굳혀보세요!",
+        description: "과소비 지출을 기록하며 소비 습관을 길러주는 세미 가계부.",
         url: "https://www.don-good.xyz",
         siteName: "돈 굳었다! 돈굳",
         images: [
@@ -51,8 +37,7 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
         title: "돈 굳었다! 돈굳 - 소비 습관 개선 가계부",
-        description:
-            "과소비 지출을 기록하며 소비 습관을 길러주는 세미 가계부. 돈을 굳혀보세요!",
+        description: "과소비 지출을 기록하며 소비 습관을 길러주는 세미 가계부.",
         images: ["/DonGood_img.png"],
     },
     robots: {
@@ -75,11 +60,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="ko">
-            <body className={`${geistSans.variable} ${geistMono.variable}`}>
-                <AuthProvider>
-                    <ThemeProvider />
-                    {children}
-                </AuthProvider>
+            <body>
+                <ThemeProvider />
+                {children}
             </body>
         </html>
     );

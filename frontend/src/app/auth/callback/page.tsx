@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { createBrowserSupabaseClient } from "@/lib/supabase/client";
 
 export default function AuthCallback() {
     const router = useRouter();
@@ -10,24 +10,25 @@ export default function AuthCallback() {
     useEffect(() => {
         const handleAuthCallback = async () => {
             try {
+                const supabase = createBrowserSupabaseClient();
                 const { data, error } = await supabase.auth.getSession();
 
                 if (error) {
                     console.error("Auth callback error:", error);
-                    router.push("/login?error=auth_failed");
+                    router.replace("/login?error=auth_failed");
                     return;
                 }
 
                 if (data.session) {
                     // 로그인 성공
-                    router.push("/dashboard");
+                    router.replace("/dashboard");
                 } else {
                     // 세션이 없으면 로그인 페이지로
-                    router.push("/login");
+                    router.replace("/login");
                 }
             } catch (error) {
                 console.error("Auth callback error:", error);
-                router.push("/login?error=auth_failed");
+                router.replace("/login?error=auth_failed");
             }
         };
 

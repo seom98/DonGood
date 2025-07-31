@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "@/styles/components/HomeHeader.module.css";
 import LogoIcon from "@/components/icons/LogoIcon";
 import MenuIcon from "@/components/icons/MenuIcon";
@@ -20,17 +20,16 @@ export default function HomeHeader() {
         setCurrentTheme(getCurrentTheme());
     }, []);
 
-    useEffect(() => {
-        // 팝업 외부 클릭 시 메뉴 닫기
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                menuRef.current &&
-                !menuRef.current.contains(event.target as Node)
-            ) {
-                setIsMenuOpen(false);
-            }
-        };
+    const handleClickOutside = useCallback((event: MouseEvent) => {
+        if (
+            menuRef.current &&
+            !menuRef.current.contains(event.target as Node)
+        ) {
+            setIsMenuOpen(false);
+        }
+    }, []);
 
+    useEffect(() => {
         if (isMenuOpen) {
             document.addEventListener("mousedown", handleClickOutside);
         }
@@ -38,7 +37,7 @@ export default function HomeHeader() {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [isMenuOpen]);
+    }, [isMenuOpen, handleClickOutside]);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -130,7 +129,7 @@ export default function HomeHeader() {
                                         <div
                                             className={styles.themeOptionTitle}
                                         >
-                                            시스템 설정에 맞게
+                                            시스템 설정
                                         </div>
                                     </div>
                                     <div className={styles.themeOptionIcon}>

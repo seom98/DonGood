@@ -1,0 +1,357 @@
+.container {
+    min-height: 100vh;
+    background: var(--grey025);
+}
+
+.header {
+    background: var(--grey025);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--grey200);
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--grey900);
+    margin: 0;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profileSection {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profileImage {
+    position: relative;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--blue300);
+}
+
+.defaultAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 2px solid #667eea;
+}
+
+.userName {
+    color: var(--grey900);
+    font-weight: 400;
+}
+
+.signOutButton {
+    background: var(--red300);
+    color: var(--grey025);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 400;
+    transition: background 0.3s ease;
+}
+
+.signOutButton:hover {
+    background: var(--red400);
+}
+
+.main {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--grey900);
+    font-size: 1.2rem;
+}
+
+.welcomeCard {
+    background: var(--grey025);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--grey200);
+}
+
+.welcomeCard h2 {
+    color: var(--grey900);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.welcomeCard p {
+    color: var(--grey500);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.dashboardGrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.goalsSection {
+    background: var(--grey025);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid var(--grey200);
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.featureCard {
+    background: var(--grey025);
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid var(--grey200);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.featureCard h3 {
+    color: var(--grey900);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.featureCard p {
+    color: var(--grey500);
+    line-height: 1.5;
+}
+
+/* 목표 설정 스타일 */
+.goalSettings {
+    background: var(--grey025);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid var(--grey200);
+}
+
+.goalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.goalHeader h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.editButton {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+.editButton:hover {
+    background: #5a6fd8;
+}
+
+.message {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.message.success {
+    background: var(--coral100);
+    border: 1px solid var(--coral200);
+    color: var(--coral400);
+}
+
+.message.error {
+    background: var(--red100);
+    border: 1px solid var(--red200);
+    color: var(--red400);
+}
+
+.goalContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.goalItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.goalItem label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.inputGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.goalInput {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.goalInput:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.currency {
+    color: #666;
+    font-weight: 500;
+    min-width: 20px;
+}
+
+.goalDisplay {
+    padding: 10px 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.goalActions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.saveButton {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+    flex: 1;
+}
+
+.saveButton:hover:not(:disabled) {
+    background: #218838;
+}
+
+.saveButton:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+.cancelButton {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+    flex: 1;
+}
+
+.cancelButton:hover:not(:disabled) {
+    background: #5a6268;
+}
+
+.cancelButton:disabled {
+    background: #adb5bd;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .userInfo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .welcomeCard {
+        padding: 20px;
+    }
+
+    .dashboardGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .goalSettings {
+        padding: 20px;
+    }
+
+    .goalActions {
+        flex-direction: column;
+    }
+}

@@ -177,6 +177,16 @@
     color: #5a67d8;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
 .icon {
     width: 20px;
     height: 20px;

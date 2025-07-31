@@ -1,0 +1,222 @@
+@font-face {
+    font-family: "Esamanru";
+    src: url("/fonts/esamanru Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Esamanru";
+    src: url("/fonts/esamanru Medium.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Esamanru";
+    src: url("/fonts/esamanru Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 다크모드 클래스가 있을 때 */
+[data-theme="dark"] {
+    --grey025: #0d121c;
+    --grey050: #121926;
+    --grey100: #202939;
+    --grey200: #364152;
+    --grey300: #4b5565;
+    --grey400: #697586;
+    --grey500: #9aa4b2;
+    --grey600: #cdd5df;
+    --grey700: #e3e8ef;
+    --grey800: #eef2f6;
+    --grey900: #f8fafc;
+    --grey950: #fcfcfd;
+
+    --coral400: #fff0eb;
+    --coral300: #ffb4a1;
+    --coral200: #ec6547;
+    --coral100: #801f0f;
+
+    --red400: #ffebe9;
+    --red300: #ffaba8;
+    --red200: #fa4549;
+    --red100: #82071e;
+
+    --pink400: #ffeff7;
+    --pink300: #ffadda;
+    --pink200: #e85aad;
+    --pink100: #772057;
+
+    --purple400: #fbefff;
+    --purple300: #d8b9ff;
+    --purple200: #a475f9;
+    --purple100: #512a97;
+
+    --blue400: #ddf4ff;
+    --blue300: #80ccff;
+    --blue200: #218bff;
+    --blue100: #033d8b;
+}
+
+[data-theme="light"] {
+    --grey025: #fcfcfd;
+    --grey050: #f8fafc;
+    --grey100: #eef2f6;
+    --grey200: #e3e8ef;
+    --grey300: #cdd5df;
+    --grey400: #9aa4b2;
+    --grey500: #697586;
+    --grey600: #4b5565;
+    --grey700: #364152;
+    --grey800: #202939;
+    --grey900: #121926;
+    --grey950: #0d121c;
+
+    --coral100: #fff0eb;
+    --coral200: #ffb4a1;
+    --coral300: #ec6547;
+    --coral400: #801f0f;
+
+    --red100: #ffebe9;
+    --red200: #ffaba8;
+    --red300: #fa4549;
+    --red400: #82071e;
+
+    --pink100: #ffeff7;
+    --pink200: #ffadda;
+    --pink300: #e85aad;
+    --pink400: #772057;
+
+    --purple100: #fbefff;
+    --purple200: #d8b9ff;
+    --purple300: #a475f9;
+    --purple400: #512a97;
+
+    --blue100: #ddf4ff;
+    --blue200: #80ccff;
+    --blue300: #218bff;
+    --blue400: #033d8b;
+}
+
+/* 시스템 설정이 다크모드일 때 (사용자가 수동으로 선택하지 않은 경우) */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --grey025: #0d121c;
+        --grey050: #121926;
+        --grey100: #202939;
+        --grey200: #364152;
+        --grey300: #4b5565;
+        --grey400: #697586;
+        --grey500: #9aa4b2;
+        --grey600: #cdd5df;
+        --grey700: #e3e8ef;
+        --grey800: #eef2f6;
+        --grey900: #f8fafc;
+        --grey950: #fcfcfd;
+
+        --coral400: #fff0eb;
+        --coral300: #ffb4a1;
+        --coral200: #ec6547;
+        --coral100: #801f0f;
+
+        --red400: #ffebe9;
+        --red300: #ffaba8;
+        --red200: #fa4549;
+        --red100: #82071e;
+
+        --pink400: #ffeff7;
+        --pink300: #ffadda;
+        --pink200: #e85aad;
+        --pink100: #772057;
+
+        --purple400: #fbefff;
+        --purple300: #d8b9ff;
+        --purple200: #a475f9;
+        --purple100: #512a97;
+
+        --blue400: #ddf4ff;
+        --blue300: #80ccff;
+        --blue200: #218bff;
+        --blue100: #033d8b;
+    }
+}
+
+/* 시스템 설정이 라이트모드일 때 (사용자가 수동으로 선택하지 않은 경우) */
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+        --grey025: #fcfcfd;
+        --grey050: #f8fafc;
+        --grey100: #eef2f6;
+        --grey200: #e3e8ef;
+        --grey300: #cdd5df;
+        --grey400: #9aa4b2;
+        --grey500: #697586;
+        --grey600: #4b5565;
+        --grey700: #364152;
+        --grey800: #202939;
+        --grey900: #121926;
+        --grey950: #0d121c;
+
+        --coral100: #fff0eb;
+        --coral200: #ffb4a1;
+        --coral300: #ec6547;
+        --coral400: #801f0f;
+
+        --red100: #ffebe9;
+        --red200: #ffaba8;
+        --red300: #fa4549;
+        --red400: #82071e;
+
+        --pink100: #ffeff7;
+        --pink200: #ffadda;
+        --pink300: #e85aad;
+        --pink400: #772057;
+
+        --purple100: #fbefff;
+        --purple200: #d8b9ff;
+        --purple300: #a475f9;
+        --purple400: #512a97;
+
+        --blue100: #ddf4ff;
+        --blue200: #80ccff;
+        --blue300: #218bff;
+        --blue400: #033d8b;
+    }
+}
+
+html,
+body {
+    font-family: "Esamanru";
+    background-color: var(--grey025);
+    color: var(--grey900);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+textarea,
+input,
+button,
+div,
+span,
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "EsaManru";
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}

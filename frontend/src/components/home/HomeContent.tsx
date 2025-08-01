@@ -9,6 +9,7 @@ import { getCurrentUserClient } from "@/lib/supabase/client";
 
 export default function HomeContent() {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
     const [user, setUser] = useState<User | null>(null);
     const router = useRouter();
 
@@ -32,8 +33,18 @@ export default function HomeContent() {
             router.push("/dashboard");
         } else {
             // 로그인되지 않은 사용자는 모달 열기
+            setIsClosing(false);
             setIsLoginModalOpen(true);
         }
+    };
+
+    const handleCloseModal = () => {
+        setIsClosing(true);
+        // 애니메이션 완료 후 모달 완전히 닫기
+        setTimeout(() => {
+            setIsLoginModalOpen(false);
+            setIsClosing(false);
+        }, 300);
     };
 
     return (
@@ -44,7 +55,8 @@ export default function HomeContent() {
 
             <LoginModal
                 isOpen={isLoginModalOpen}
-                onClose={() => setIsLoginModalOpen(false)}
+                isClosing={isClosing}
+                onClose={handleCloseModal}
             />
         </>
     );

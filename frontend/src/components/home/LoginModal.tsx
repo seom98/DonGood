@@ -9,10 +9,15 @@ import CancleIcon from "../icons/CancleIcon";
 
 interface LoginModalProps {
     isOpen: boolean;
+    isClosing?: boolean;
     onClose: () => void;
 }
 
-export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
+export default function LoginModal({
+    isOpen,
+    isClosing = false,
+    onClose,
+}: LoginModalProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
@@ -71,8 +76,17 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     if (!isOpen) return null;
 
     return (
-        <div className={styles.modalOverlay} onClick={handleBackdropClick}>
-            <div className={styles.modalContent}>
+        <div
+            className={`${styles.modalOverlay} ${
+                isClosing ? styles.closing : ""
+            }`}
+            onClick={handleBackdropClick}
+        >
+            <div
+                className={`${styles.modalContent} ${
+                    isClosing ? styles.closing : ""
+                }`}
+            >
                 <button className={styles.closeButton} onClick={onClose}>
                     <CancleIcon />
                 </button>

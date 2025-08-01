@@ -35,6 +35,11 @@
     font-size: 16px;
     font-weight: 400;
     cursor: pointer;
+    transition: all 0.3s;
+}
+
+.startButton:hover {
+    box-shadow: 0 4px 25px var(--shadow1);
 }
 
 @media (max-width: 600px) {

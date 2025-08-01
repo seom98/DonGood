@@ -4,12 +4,11 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "@supabase/supabase-js";
 import styles from "@/styles/pages/HomePage.module.css";
-import LoginModal from "@/components/auth/LoginModal";
+import LoginModal from "@/components/home/LoginModal";
 import { getCurrentUserClient } from "@/lib/supabase/client";
 
 export default function HomeContent() {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState<User | null>(null);
     const router = useRouter();
 
@@ -21,8 +20,6 @@ export default function HomeContent() {
                 setUser(currentUser);
             } catch (error) {
                 console.error("사용자 상태 확인 오류:", error);
-            } finally {
-                setIsLoading(false);
             }
         };
 
@@ -41,16 +38,9 @@ export default function HomeContent() {
 
     return (
         <>
-            {isLoading ? (
-                <button className={styles.startButton}>로딩 중...</button>
-            ) : (
-                <button
-                    onClick={handleStartClick}
-                    className={styles.startButton}
-                >
-                    {user ? "대시보드로 이동" : "시작하기"}
-                </button>
-            )}
+            <button onClick={handleStartClick} className={styles.startButton}>
+                시작하기
+            </button>
 
             <LoginModal
                 isOpen={isLoginModalOpen}

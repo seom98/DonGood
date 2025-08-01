@@ -57,7 +57,7 @@
     right: 0;
     background: var(--grey025);
     border-radius: 16px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 40px var(--shadow1);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px) scale(0.95);

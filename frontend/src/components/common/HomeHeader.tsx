@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "@/styles/components/HomeHeader.module.css";
-import LogoIcon from "@/components/icons/LogoIcon";
+import LogoIcon from "@/components/icons/logos/LogoIcon";
 import MenuIcon from "@/components/icons/MenuIcon";
 import SunIcon from "@/components/icons/SunIcon";
 import MoonIcon from "@/components/icons/MoonIcon";

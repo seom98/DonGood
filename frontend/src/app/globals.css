@@ -56,6 +56,12 @@
     --blue300: #80ccff;
     --blue200: #218bff;
     --blue100: #033d8b;
+
+    --shadow1: #e3e8ef15;
+    --shadow2: #0d121c15;
+
+    --white: #fcfcfd;
+    --black: #0d121c;
 }
 
 [data-theme="light"] {
@@ -96,6 +102,12 @@
     --blue200: #80ccff;
     --blue300: #218bff;
     --blue400: #033d8b;
+
+    --shadow1: #0d121c15;
+    --shadow2: #e3e8ef15;
+
+    --white: #fcfcfd;
+    --black: #0d121c;
 }
 
 /* 시스템 설정이 다크모드일 때 (사용자가 수동으로 선택하지 않은 경우) */
@@ -138,6 +150,12 @@
         --blue300: #80ccff;
         --blue200: #218bff;
         --blue100: #033d8b;
+
+        --shadow1: #e3e8ef15;
+        --shadow2: #0d121c15;
+
+        --white: #fcfcfd;
+        --black: #0d121c;
     }
 }
 
@@ -181,6 +199,12 @@
         --blue200: #80ccff;
         --blue300: #218bff;
         --blue400: #033d8b;
+
+        --shadow1: #0d121c15;
+        --shadow2: #e3e8ef15;
+
+        --white: #fcfcfd;
+        --black: #0d121c;
     }
 }
 

@@ -1,6 +1,8 @@
 import "@/app/globals.css";
 import ThemeProvider from "@/components/common/ThemeProvider";
+import EmotionRegistry from "@/lib/emotion/EmotionRegistry";
 import { Metadata } from "next";
+
 export const metadata: Metadata = {
     title: "돈 굳었다! 돈굳 - 소비 습관 개선 가계부",
     description: "과소비 지출을 기록하며 소비 습관을 길러주는 세미 가계부.",
@@ -61,8 +63,10 @@ export default function RootLayout({
     return (
         <html lang="ko">
             <body>
-                <ThemeProvider />
-                {children}
+                <EmotionRegistry>
+                    <ThemeProvider />
+                    {children}
+                </EmotionRegistry>
             </body>
         </html>
     );

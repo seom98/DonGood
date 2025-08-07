@@ -32,7 +32,7 @@ export default function LoginModal({
                     redirectTo: `${
                         process.env.NEXT_PUBLIC_SITE_URL ||
                         "http://localhost:3000"
-                    }/auth/callback`,
+                    }/auth/v1/callback`,
                 },
             });
             if (error) throw error;
@@ -55,7 +55,7 @@ export default function LoginModal({
                     redirectTo: `${
                         process.env.NEXT_PUBLIC_SITE_URL ||
                         "http://localhost:3000"
-                    }/auth/callback`,
+                    }/auth/v1/callback`,
                 },
             });
             if (error) throw error;

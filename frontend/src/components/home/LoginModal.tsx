@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { createClient } from "@/utils/supabase/client";
 import styles from "./LoginModal.module.css";
 import KakaoIcon from "../icons/logos/KakaoIcon";
 import GoogleIcon from "../icons/logos/GoogleIcon";
@@ -25,7 +25,7 @@ export default function LoginModal({
         setLoading(true);
         setError(null);
         try {
-            const supabase = createBrowserSupabaseClient();
+            const supabase = createClient();
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: "google",
                 options: {
@@ -48,7 +48,7 @@ export default function LoginModal({
         setLoading(true);
         setError(null);
         try {
-            const supabase = createBrowserSupabaseClient();
+            const supabase = createClient();
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: "kakao",
                 options: {

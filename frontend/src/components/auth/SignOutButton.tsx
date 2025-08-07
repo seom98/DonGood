@@ -1,6 +1,6 @@
 "use client";
 
-import { signOut } from "@/lib/supabase/auth";
+import { signOutClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import styles from "@/styles/pages/DashboardPage.module.css";
 
@@ -9,7 +9,7 @@ export default function SignOutButton() {
 
     const handleSignOut = async () => {
         try {
-            await signOut();
+            await signOutClient();
             router.replace("/");
         } catch (error) {
             console.error("로그아웃 중 오류가 발생했습니다:", error);

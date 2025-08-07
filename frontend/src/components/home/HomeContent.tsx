@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { User } from "@supabase/supabase-js";
 import styles from "@/styles/pages/HomePage.module.css";
 import LoginModal from "@/components/home/LoginModal";
-import { getCurrentUserClient } from "@/lib/supabase/client";
+import { getCurrentUserClient } from "@/utils/supabase/client";
 
 export default function HomeContent() {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);

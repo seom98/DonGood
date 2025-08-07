@@ -7,7 +7,7 @@ import Image from "next/image";
 import styles from "@/styles/pages/DashboardPage.module.css";
 import SignOutButton from "@/components/auth/SignOutButton";
 import GoalSettings from "@/components/dashboard/GoalSettings";
-import { getCurrentUserClient } from "@/lib/supabase/client";
+import { getCurrentUserClient } from "@/utils/supabase/client";
 
 export default function DashboardPage() {
     const [user, setUser] = useState<User | null>(null);

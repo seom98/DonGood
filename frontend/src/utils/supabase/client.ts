@@ -4,7 +4,7 @@ import { User, Session } from '@supabase/supabase-js'
 /**
  * 클라이언트 사이드에서 사용할 Supabase 클라이언트 생성
  */
-export function createBrowserSupabaseClient() {
+export function createClient() {
   return createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -15,7 +15,7 @@ export function createBrowserSupabaseClient() {
  * 클라이언트 사이드에서 현재 사용자 정보 가져오기
  */
 export async function getCurrentUserClient(): Promise<User | null> {
-  const supabase = createBrowserSupabaseClient()
+  const supabase = createClient()
   
   try {
     const { data: { user }, error } = await supabase.auth.getUser()
@@ -35,7 +35,7 @@ export async function getCurrentUserClient(): Promise<User | null> {
  * 클라이언트 사이드에서 현재 세션 정보 가져오기
  */
 export async function getCurrentSessionClient(): Promise<Session | null> {
-  const supabase = createBrowserSupabaseClient()
+  const supabase = createClient()
   
   try {
     const { data: { session }, error } = await supabase.auth.getSession()
@@ -55,6 +55,6 @@ export async function getCurrentSessionClient(): Promise<Session | null> {
  * 클라이언트 사이드에서 로그아웃 처리
  */
 export async function signOutClient() {
-  const supabase = createBrowserSupabaseClient()
+  const supabase = createClient()
   await supabase.auth.signOut()
 } 

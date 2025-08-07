@@ -1,4 +1,4 @@
-import { createServerSupabaseClient } from '@/lib/supabase/server'
+import { createClient } from '@/utils/supabase/client'
 
 type UserGoal = {
   id: string
@@ -11,7 +11,7 @@ type UserGoal = {
 
 // 사용자의 목표 설정 가져오기
 export async function getUserGoals(userId: string): Promise<UserGoal | null> {
-  const supabase = await createServerSupabaseClient()
+  const supabase = createClient()
   
   try {
     const { data, error } = await supabase
@@ -39,7 +39,7 @@ export async function upsertUserGoals(
   userId: string, 
   goals: { daily_goal: number; monthly_goal: number }
 ): Promise<UserGoal | null> {
-  const supabase = await createServerSupabaseClient()
+  const supabase = createClient()
   
   try {
     const { data, error } = await supabase
@@ -62,7 +62,7 @@ export async function upsertUserGoals(
 
 // 사용자 목표 설정 삭제
 export async function deleteUserGoals(userId: string): Promise<boolean> {
-  const supabase = await createServerSupabaseClient()
+  const supabase = createClient()
   
   try {
     const { error } = await supabase

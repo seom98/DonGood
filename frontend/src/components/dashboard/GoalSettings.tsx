@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { createBrowserSupabaseClient } from "@/lib/supabase/client";
+import { createClient } from "@/utils/supabase/client";
 import styles from "@/styles/pages/DashboardPage.module.css";
 
 interface GoalSettingsProps {
@@ -18,7 +18,7 @@ export default function GoalSettings({ userId }: GoalSettingsProps) {
 
     const fetchGoals = useCallback(async () => {
         try {
-            const supabase = createBrowserSupabaseClient();
+            const supabase = createClient();
             const { data, error } = await supabase
                 .from("user_goals")
                 .select("*")
@@ -52,7 +52,7 @@ export default function GoalSettings({ userId }: GoalSettingsProps) {
         setMessage("");
 
         try {
-            const supabase = createBrowserSupabaseClient();
+            const supabase = createClient();
             let error;
 
             if (existingGoalId) {

@@ -10,27 +10,22 @@
     font-weight: 400;
     font-style: normal;
 }
-@font-face {
-    font-family: "Esamanru";
-    src: url("/fonts/esamanru Bold.ttf") format("truetype");
-    font-weight: 700;
-    font-style: normal;
-}
 
 /* 다크모드 클래스가 있을 때 */
 [data-theme="dark"] {
-    --grey025: #0d121c;
-    --grey050: #121926;
-    --grey100: #202939;
-    --grey200: #364152;
-    --grey300: #4b5565;
-    --grey400: #697586;
-    --grey500: #9aa4b2;
-    --grey600: #cdd5df;
-    --grey700: #e3e8ef;
-    --grey800: #eef2f6;
-    --grey900: #f8fafc;
-    --grey950: #fcfcfd;
+    --grey025: #05060a;
+    --grey050: #0d121c;
+    --grey100: #121926;
+    --grey200: #202939;
+    --grey300: #364152;
+    --grey400: #4b5565;
+    --grey500: #697586;
+    --grey600: #9aa4b2;
+    --grey700: #cdd5df;
+    --grey800: #e3e8ef;
+    --grey900: #eef2f6;
+    --grey950: #f8fafc;
+    --grey975: #fcfcfd;
 
     --coral400: #fff0eb;
     --coral300: #ffb4a1;
@@ -77,6 +72,7 @@
     --grey800: #202939;
     --grey900: #121926;
     --grey950: #0d121c;
+    --grey975: #05060a;
 
     --coral100: #fff0eb;
     --coral200: #ffb4a1;
@@ -103,8 +99,8 @@
     --blue300: #218bff;
     --blue400: #033d8b;
 
-    --shadow1: #0d121c15;
-    --shadow2: #e3e8ef15;
+    --shadow1: #502a9716;
+    --shadow2: #502a9708;
 
     --white: #fcfcfd;
     --black: #0d121c;
@@ -113,18 +109,19 @@
 /* 시스템 설정이 다크모드일 때 (사용자가 수동으로 선택하지 않은 경우) */
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
-        --grey025: #0d121c;
-        --grey050: #121926;
-        --grey100: #202939;
-        --grey200: #364152;
-        --grey300: #4b5565;
-        --grey400: #697586;
-        --grey500: #9aa4b2;
-        --grey600: #cdd5df;
-        --grey700: #e3e8ef;
-        --grey800: #eef2f6;
-        --grey900: #f8fafc;
-        --grey950: #fcfcfd;
+        --grey025: #05060a;
+        --grey050: #0d121c;
+        --grey100: #121926;
+        --grey200: #202939;
+        --grey300: #364152;
+        --grey400: #4b5565;
+        --grey500: #697586;
+        --grey600: #9aa4b2;
+        --grey700: #cdd5df;
+        --grey800: #e3e8ef;
+        --grey900: #eef2f6;
+        --grey950: #f8fafc;
+        --grey975: #fcfcfd;
 
         --coral400: #fff0eb;
         --coral300: #ffb4a1;
@@ -174,6 +171,7 @@
         --grey800: #202939;
         --grey900: #121926;
         --grey950: #0d121c;
+        --grey975: #05060a;
 
         --coral100: #fff0eb;
         --coral200: #ffb4a1;
@@ -200,8 +198,8 @@
         --blue300: #218bff;
         --blue400: #033d8b;
 
-        --shadow1: #0d121c15;
-        --shadow2: #e3e8ef15;
+        --shadow1: #502a9716;
+        --shadow2: #502a9708;
 
         --white: #fcfcfd;
         --black: #0d121c;

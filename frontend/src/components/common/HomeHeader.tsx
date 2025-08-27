@@ -1,52 +1,20 @@
 "use client";
-import { useState, useEffect, useRef, useCallback } from "react";
 import styles from "@/styles/components/HomeHeader.module.css";
 import LogoIcon from "@/components/icons/logos/LogoIcon";
 import MenuIcon from "@/components/icons/MenuIcon";
 import SunIcon from "@/components/icons/SunIcon";
 import MoonIcon from "@/components/icons/MoonIcon";
 import SystemIcon from "@/components/icons/SystemIcon";
-import { setTheme, getCurrentTheme } from "@/utils/theme";
+import { useModal } from "@/hooks/useModal";
+import { useTheme } from "@/hooks/useTheme";
 
 export default function HomeHeader() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [currentTheme, setCurrentTheme] = useState<
-        "light" | "dark" | "system"
-    >("light");
-    const menuRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        // 컴포넌트 마운트 시 현재 테마 가져오기
-        setCurrentTheme(getCurrentTheme());
-    }, []);
-
-    const handleClickOutside = useCallback((event: MouseEvent) => {
-        if (
-            menuRef.current &&
-            !menuRef.current.contains(event.target as Node)
-        ) {
-            setIsMenuOpen(false);
-        }
-    }, []);
-
-    useEffect(() => {
-        if (isMenuOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [isMenuOpen, handleClickOutside]);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
-    const handleThemeChange = (theme: "light" | "dark" | "system") => {
-        setTheme(theme);
-        setCurrentTheme(theme);
-    };
+    const {
+        isOpen: isMenuOpen,
+        modalRef: menuRef,
+        toggleModal: toggleMenu,
+    } = useModal();
+    const { currentTheme, handleThemeChange } = useTheme();
 
     return (
         <div className={styles.header}>

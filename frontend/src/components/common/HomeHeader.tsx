@@ -1,12 +1,12 @@
 "use client";
 import styles from "@/styles/components/HomeHeader.module.css";
-import LogoIcon from "@/components/icons/logos/LogoIcon";
 import MenuIcon from "@/components/icons/MenuIcon";
 import SunIcon from "@/components/icons/SunIcon";
 import MoonIcon from "@/components/icons/MoonIcon";
 import SystemIcon from "@/components/icons/SystemIcon";
 import { useModal } from "@/hooks/useModal";
 import { useTheme } from "@/hooks/useTheme";
+import Logo from "@/components/molecules/Logo";
 
 export default function HomeHeader() {
     const {
@@ -18,14 +18,7 @@ export default function HomeHeader() {
 
     return (
         <div className={styles.header}>
-            <div className={styles.headerLogo}>
-                <LogoIcon
-                    className={styles.headerLogoIcon}
-                    width={36}
-                    height={28}
-                />
-                <div className={styles.headerLogoText}>DonGood</div>
-            </div>
+            <Logo />
             <div className={styles.headerMenu} ref={menuRef}>
                 <button
                     className={styles.menuButton}

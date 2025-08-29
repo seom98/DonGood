@@ -1,29 +1,17 @@
 .header {
+    background-color: var(--grey025);
+    /* border-bottom: 1px solid var(--grey100); */
     position: fixed;
+    height: 72px;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
 }
 
-.headerLogo {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-}
-
-.headerLogoIcon {
-    width: 36px;
-}
-.headerLogoText {
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--grey800);
-}
 .headerMenu {
     position: relative;
     display: flex;

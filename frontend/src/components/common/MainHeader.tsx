@@ -4,12 +4,13 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 import { User } from "@supabase/supabase-js";
 import SignOutButton from "@/components/auth/SignOutButton";
+import Logo from "../molecules/Logo";
 
 const HeaderContainer = styled.header`
     background-color: var(--grey025);
     border-bottom: 1px solid var(--grey100);
     position: fixed;
-    height: 72px;
+    height: 73px;
     top: 0;
     left: 0;
     right: 0;
@@ -56,7 +57,7 @@ interface MainHeaderProps {
 export default function MainHeader({ user }: MainHeaderProps) {
     return (
         <HeaderContainer>
-            <div>로고</div>
+            <Logo />
 
             <UserInfoContainer>
                 <UserName>

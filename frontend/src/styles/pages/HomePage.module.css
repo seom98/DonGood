@@ -8,25 +8,13 @@
 @media (max-width: 600px) {
 }
 
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 20px;
-    text-align: center;
-    background-color: var(--grey025);
-    color: var(--grey900);
-}
-
 .startButton {
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     padding: 12px 40px;
-    background-color: var(--grey900);
+    background-color: var(--grey800);
     color: var(--grey025);
     border: none;
     border-radius: 50px;

@@ -210,8 +210,8 @@ html,
 body {
     font-family: "Esamanru";
     font-weight: 300;
-    background-color: var(--grey025);
-    color: var(--grey900);
+    background-color: var(--grey050);
+    color: var(--grey800);
 }
 
 * {

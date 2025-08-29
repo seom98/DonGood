@@ -1,12 +1,41 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import styled from "@emotion/styled";
 import { useRouter } from "next/navigation";
-import { User } from "@supabase/supabase-js";
-import styles from "@/styles/pages/HomePage.module.css";
 import LoginModal from "@/components/home/LoginModal";
-import { getCurrentUserClient } from "@/utils/supabase/client";
 import { useModalWithAnimation } from "@/hooks/useModalWithAnimation";
+import { useAuthStatus } from "@/hooks/useAuthStatus";
+
+const StartButtonStyled = styled.button`
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 40px;
+    background-color: var(--grey800);
+    color: var(--grey025);
+    border: none;
+    border-radius: 50px;
+    width: 100%;
+    max-width: 400px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        box-shadow: 0 4px 25px var(--shadow1);
+    }
+
+    @media (max-width: 600px) {
+        font-size: 16px;
+        width: calc(100% - 40px);
+        max-width: 100%;
+        margin: 0 20px;
+        left: 0;
+        transform: none;
+    }
+`;
 
 export default function StartButton() {
     const {
@@ -15,38 +44,22 @@ export default function StartButton() {
         openModal,
         handleCloseWithAnimation,
     } = useModalWithAnimation();
-    const [user, setUser] = useState<User | null>(null);
+    const { isAuthenticated } = useAuthStatus();
     const router = useRouter();
 
-    useEffect(() => {
-        // 컴포넌트 마운트 시 사용자 상태 확인
-        const checkUserStatus = async () => {
-            try {
-                const currentUser = await getCurrentUserClient();
-                setUser(currentUser);
-            } catch (error) {
-                console.error("사용자 상태 확인 오류:", error);
-            }
-        };
-
-        checkUserStatus();
-    }, []);
-
     const handleStartClick = () => {
-        if (user) {
-            // 로그인된 사용자는 바로 대시보드로 이동
+        if (isAuthenticated) {
             router.push("/dashboard");
         } else {
-            // 로그인되지 않은 사용자는 모달 열기
             openModal();
         }
     };
 
     return (
         <>
-            <button onClick={handleStartClick} className={styles.startButton}>
+            <StartButtonStyled onClick={handleStartClick}>
                 시작하기
-            </button>
+            </StartButtonStyled>
 
             <LoginModal
                 isOpen={isLoginModalOpen}

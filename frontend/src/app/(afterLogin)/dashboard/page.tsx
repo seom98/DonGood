@@ -17,7 +17,7 @@ export default function DashboardPage() {
 
     return (
         <div className={styles.container}>
-            <GoalSettings userId={user.id} />
+            <GoalSettings />
         </div>
     );
 }

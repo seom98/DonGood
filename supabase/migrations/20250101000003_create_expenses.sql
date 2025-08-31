@@ -1,23 +1,24 @@
--- 지출 기록 테이블 생성
+-- 소비 기록 테이블 생성
 CREATE TABLE IF NOT EXISTS expenses (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
-    amount INTEGER NOT NULL, -- 지출 금액 (원)
-    name VARCHAR(100) NOT NULL, -- 지출 이름
-    memo TEXT, -- 메모
+    name VARCHAR(100) NOT NULL, -- 소비명
+    amount INTEGER NOT NULL,    -- 소비금액
+    memo TEXT,                  -- 메모
     expense_date DATE NOT NULL, -- 지출 날짜 (시간 없음)
-    is_fixed_expense BOOLEAN DEFAULT FALSE, -- 고정 지출 여부
-    is_necessary_expense BOOLEAN DEFAULT FALSE, -- 쓸 수밖에 없었던 지출 여부
-    is_unnecessary_expense BOOLEAN DEFAULT FALSE, -- 불필요한 지출 여부
+    expense_type INTEGER NOT NULL, -- 소비형태 (1:일반, 2:고정, 3:낭비, 4:특수)
     is_favorite BOOLEAN DEFAULT FALSE, -- 즐겨찾기 여부
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
+    CONSTRAINT check_expense_type CHECK (expense_type >= 1 AND expense_type <= 4)
 );
 
 -- 인덱스 생성 (성능 최적화)
 CREATE INDEX IF NOT EXISTS idx_expenses_user_id ON expenses(user_id);
 CREATE INDEX IF NOT EXISTS idx_expenses_date ON expenses(expense_date);
 CREATE INDEX IF NOT EXISTS idx_expenses_user_date ON expenses(user_id, expense_date);
+CREATE INDEX IF NOT EXISTS idx_expenses_expense_type ON expenses(expense_type);
+CREATE INDEX IF NOT EXISTS idx_expenses_user_type ON expenses(user_id, expense_type);
 
 -- RLS (Row Level Security) 활성화
 ALTER TABLE expenses ENABLE ROW LEVEL SECURITY;

@@ -2,8 +2,11 @@
 CREATE TABLE IF NOT EXISTS user_goals (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
-    daily_goal INTEGER NOT NULL DEFAULT 0, -- 일간 목표 (원)
-    monthly_goal INTEGER NOT NULL DEFAULT 0, -- 월간 목표 (원)
+    daily_goal INTEGER NOT NULL DEFAULT 0, -- 일간 목표금액
+    include_general_expense BOOLEAN NOT NULL DEFAULT FALSE, -- 일반지출 포함
+    include_fixed_expense BOOLEAN NOT NULL DEFAULT FALSE,   -- 고정지출 포함
+    include_waste_expense BOOLEAN NOT NULL DEFAULT FALSE,   -- 낭비지출 포함
+    include_special_expense BOOLEAN NOT NULL DEFAULT FALSE, -- 특수지출 포함
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL,
     UNIQUE(user_id)
@@ -37,4 +40,5 @@ $$ language 'plpgsql';
 CREATE TRIGGER update_user_goals_updated_at 
     BEFORE UPDATE ON user_goals 
     FOR EACH ROW 
-    EXECUTE FUNCTION update_updated_at_column(); 
+    EXECUTE FUNCTION update_updated_at_column();
+

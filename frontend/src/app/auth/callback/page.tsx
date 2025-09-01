@@ -12,7 +12,7 @@ export default function AuthCallbackPage() {
             const supabase = createClient();
 
             try {
-                const { data, error } = await supabase.auth.getSession();
+                const { error } = await supabase.auth.getSession();
 
                 if (error) {
                     console.error("Auth callback error:", error);

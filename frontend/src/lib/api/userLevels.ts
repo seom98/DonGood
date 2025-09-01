@@ -1,7 +1,6 @@
 import { createClient } from "@/utils/supabase/client";
 import { 
     UserLevel, 
-    UpdateUserLevelData, 
     GetUserLevelResponse, 
     UpdateUserLevelResponse 
 } from "@/types/userLevels";

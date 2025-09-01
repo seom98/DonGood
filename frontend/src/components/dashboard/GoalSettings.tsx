@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import styled from "@emotion/styled";
 import { getCurrentUserGoal, upsertUserGoal } from "@/lib/api/goals";
-import { UserGoal, CreateUserGoalData } from "@/types/goals";
+import { CreateUserGoalData } from "@/types/goals";
 
 const GoalSettingsContainer = styled.div`
     background: var(--grey025);
@@ -98,14 +98,14 @@ const Currency = styled.span`
     min-width: 20px;
 `;
 
-const GoalDisplay = styled.div`
-    padding: 10px 12px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    color: #333;
-    font-weight: 500;
-    font-size: 1rem;
-`;
+// const GoalDisplay = styled.div`
+//     padding: 10px 12px;
+//     background: #f8f9fa;
+//     border-radius: 8px;
+//     color: #333;
+//     font-weight: 500;
+//     font-size: 1rem;
+// `;
 
 const ExpenseTypeSection = styled.div`
     display: flex;
@@ -208,7 +208,7 @@ export default function GoalSettings() {
     const [loading, setLoading] = useState<boolean>(false);
     const [message, setMessage] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [existingGoalId, setExistingGoalId] = useState<string | null>(null);
+    // const [existingGoalId, setExistingGoalId] = useState<string | null>(null);
 
     const fetchGoals = useCallback(async () => {
         try {
@@ -226,7 +226,7 @@ export default function GoalSettings() {
                 setIncludeFixedExpense(response.data.include_fixed_expense);
                 setIncludeWasteExpense(response.data.include_waste_expense);
                 setIncludeSpecialExpense(response.data.include_special_expense);
-                setExistingGoalId(response.data.id);
+                // setExistingGoalId(response.data.id);
             }
         } catch (error) {
             console.error("목표 조회 중 오류:", error);

@@ -20,13 +20,7 @@ export default function AuthCallbackPage() {
                     return;
                 }
 
-                if (data.session) {
-                    // 로그인 성공
-                    router.replace("/dashboard");
-                } else {
-                    // 세션이 없음
-                    router.replace("/");
-                }
+                router.replace("/dashboard");
             } catch (error) {
                 console.error("Auth callback error:", error);
                 router.replace("/?error=auth_failed");

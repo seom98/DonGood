@@ -270,10 +270,7 @@ export default function LoginModal({
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: "google",
                 options: {
-                    redirectTo: `${
-                        process.env.NEXT_PUBLIC_SITE_URL ||
-                        "http://localhost:3000"
-                    }/auth/callback`,
+                    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
                 },
             });
             if (error) throw error;
@@ -293,10 +290,7 @@ export default function LoginModal({
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: "kakao",
                 options: {
-                    redirectTo: `${
-                        process.env.NEXT_PUBLIC_SITE_URL ||
-                        "http://localhost:3000"
-                    }/auth/callback`,
+                    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
                 },
             });
             if (error) throw error;
